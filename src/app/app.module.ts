@@ -17,11 +17,10 @@ import{HttpClientModule}from "@angular/common/http";
 @NgModule({
   declarations: [
     AppComponent,
-
     LoginComponent,
     SignupComponent,
     NavbarComponent,
-  
+
   ],
   imports: [
     BrowserModule,
@@ -33,7 +32,7 @@ import{HttpClientModule}from "@angular/common/http";
     MatFormFieldModule,
     FormsModule,
     HttpClientModule,
-
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

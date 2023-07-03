@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit{
-  constructor(private userService:UserService,private snackBar: MatSnackBar){}
+  constructor(private userService:UserService,private snack:MatSnackBar){}
   public user={
     username:'',
     password:'',
@@ -28,8 +28,12 @@ formSubmit(){
   alert ('submit');
   console.log(this.user);
   if(this.user.username==''||this.user.username==null){
-    //alert('user is required!!!');
-    this.snackBar.open('Please enter');
+   // alert('user is required!!!');
+   this.snack.open('Please enter', '',{
+    duration:3000,
+    verticalPosition:'top',
+    horizontalPosition:'right'
+   });
     return; 
   }
 
