@@ -9,17 +9,28 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  import {MatInputModule} from '@angular/material/input';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
-import { RouterModule } from '@angular/router';
+import { Route, RouterModule } from '@angular/router';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from "@angular/forms";
 import{HttpClientModule}from "@angular/common/http";
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { HomeComponent } from './pages/home/home.component';
+import {MatToolbarModule} from '@angular/material/toolbar'; 
+import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
 
+const ROUTES: Route[] = [
+  { path: '', component: HomeComponent},
+  { path: 'login', component: LoginComponent}
+]
 @NgModule({
   declarations: [
     AppComponent,
+
     LoginComponent,
     SignupComponent,
     NavbarComponent,
+    HomeComponent,
 
   ],
   imports: [
@@ -27,14 +38,17 @@ import{HttpClientModule}from "@angular/common/http";
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    RouterModule,
+    RouterModule.forRoot(ROUTES),
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
     HttpClientModule,
-   
+    MatSnackBarModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatCardModule
   ],
-  providers: [],
+  providers: [MatSnackBarModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
