@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
 import { UserService } from 'src/app/services/user.service';
+import {MatCardModule} from '@angular/material/card';
 import swal from 'sweetalert2';
 @Component({
   selector: 'app-signup',
@@ -20,7 +21,7 @@ export class SignupComponent implements OnInit{
    
   }
 ngOnInit(): void {
-  throw new Error('Method not implemented.');
+  // throw new Error('Method not implemented.');
 }
 
 
@@ -37,12 +38,12 @@ formSubmit(){
    });
     return; 
   }
-  if(this.user.username.includes(this.user.username)){
-    this.snack.open('UserName exists!!!!!!', '',{
-     duration:3000,
-    });
-     return;
-  }
+  // if(this.user.username.includes(this.user.username)){
+  //   this.snack.open('UserName exists!!!!!!', '',{
+  //    duration:3000,
+  //   });
+  //    return;
+  // }
   
   if(this.user.password==''||this.user.password==null){
     this.snack.open('Password Required!', '',{
