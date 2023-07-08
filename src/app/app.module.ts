@@ -18,6 +18,10 @@ import { HomeComponent } from './pages/home/home.component';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
+import { authInterceptorProviders } from './services/auth.interceptor';
+import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
+
 
 const ROUTES: Route[] = [
   { path: '', component: HomeComponent},
@@ -31,6 +35,8 @@ const ROUTES: Route[] = [
     SignupComponent,
     NavbarComponent,
     HomeComponent,
+    DashboardComponent,
+    UserDashboardComponent,
 
   ],
   imports: [
@@ -48,7 +54,7 @@ const ROUTES: Route[] = [
     MatIconModule,
     MatCardModule
   ],
-  providers: [MatSnackBarModule],
+  providers: [MatSnackBarModule,authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

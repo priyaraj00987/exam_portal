@@ -1,54 +1,65 @@
-<div class="bootstrap-grid">
+<h1>login</h1>
 
+<div class="bootstrap-wrapper">
     <div class="container">
-       <div class="row mt20" >
-        <div class="col-mid-6 offset-md-3">
-           
-        <div class="container text-center">
-            <style>
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <mat-card>
+            <div class="container text-center">
+              <style>
                 img{
                   max-width :50px;
                   max-height: 50%; 
                 } 
                    </style>
-                    <img src="../../assets/logo2.png"[alt]="" />
-       
-        <h1 class="text-center">Login Here</h1>
-       {{loginData|json}}
-       <form (ngSubmit)="formSubmit()">
-    <!-- <form action=""> -->
-            <mat-form-field class ="text-center  full-width"appearance="outline">
-                <mat-label>User Name</mat-label>
-                <input required
-                [(ngModel)]="loginData.username"name=" username"
-                matInput placeholder="Enter here"/>
-                <mat-hint>Valid User Name</mat-hint>
-            </mat-form-field>
-            <br>
+              <img src="../../../assets/logo2.png" alt="" />
             
-
-            <!-- password field -->
-            <mat-form-field class ="text-center  full-width"appearance="outline">
-                <mat-label>Password</mat-label>
-                <input [(ngModel)]="loginData.password" name="password"
-                type="password" matInput placeholder="Enter here"/>
-                
-            </mat-form-field>
-
-            <div class="container text-center">
-                <button type="submit" mat-raised-button color="primary">Login</button>
-                <button  mat-raised-button  style="margin-left: 20px;" color="primary">clear</button>
+  
+            <h1 class="text-center full-width">Login Here !!</h1>
+  
+            <!-- {{ loginData | json }} -->
+            <form (ngSubmit)="formSubmit()">
+              <!-- username field -->
+              <mat-form-field class=" text-center full-width" appearance="outline">
+                <mat-label>User Name</mat-label>
+                <input
+                  [(ngModel)]="loginData.username"
+                  name="username"
+                  required
+                  matInput
+                  placeholder="Enter here"
+                />
+               
+                <mat-hint>Valid User Name</mat-hint>
+              </mat-form-field>
+  <br>
+              <!-- password field  -->
+  
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>User Password</mat-label>
+                <input
+                  [(ngModel)]="loginData.password"
+                  name="password"
+                  type="password"
+                  required
+                  matInput
+                  placeholder="Enter here"
+                />
+              </mat-form-field>
+  
+              <div class="container text-center">
+                <button mat-raised-button color="primary" type="submit">
+                  Login
+                </button>
+                <button class="ml10" mat-raised-button color="accent">
+                  Reset
+                </button>
               </div>
-
-
-
-
-        </form>
-       <!-- </form> -->
+            </form>
+         
         </div>
-           
-        </div>
-       </div>
+      </mat-card>
+      </div>
     </div>
-</div>
-
+  </div>
+  

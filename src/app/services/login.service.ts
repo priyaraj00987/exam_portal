@@ -8,6 +8,11 @@ export class LoginService {
 
   constructor(private http:HttpClient) { }
 
+
+  public getCurrentUser(){
+    return this.http.get(`${baseUrl}/current-user`);
+  }
+
   //generate token
 
   public generateToken(loginData:any){
@@ -15,14 +20,15 @@ export class LoginService {
   }
 
 
-  //login user
-  public login(token:any){
-    localStorage.setItem('token',token);
-    return true;
-  }
+ // login user
+  public loginUser(token:any){
+    localStorage.setItem("token",token);
+   return true;
+ }
 
-  //islogin user
-  public isLogin(){
+
+     //islogin user
+   public isLogin():boolean{
     let tokenstr= localStorage.getItem('token');
     if(tokenstr==null||tokenstr==undefined||tokenstr=='')
     return false;
@@ -37,7 +43,7 @@ export class LoginService {
   }
 
   // get token
-  public getToken(){
+  public getToken():any{
     return localStorage.getItem('token');
   }
 
@@ -58,9 +64,9 @@ export class LoginService {
 
 
 //get user role
-public getUserRolw(){
+public getUserRole(){
   let user=this.getUser();
-  return user.auhtorities[0].authority;
+  return user.authorities[0].authority;
 }
 
-}
+  }
