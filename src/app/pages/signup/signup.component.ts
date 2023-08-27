@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { UserService } from 'src/app/services/user.service';
 import {MatCardModule} from '@angular/material/card';
 import swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -14,85 +15,54 @@ export class SignupComponent implements OnInit{
   public user={
     username:'',
     password:'',
-    firstName:'',
-    lastName:'',
+   // firstName:'',
+    firstname:'',
+    lastname:'',
     email:'',              
     phone:'',
    
-  }
-ngOnInit(): void {
-  // throw new Error('Method not implemented.');
-}
+  };
+  ngOnInit(): void {}
 
-
-formSubmit(){
-  alert ('submit');
-  console.log(this.user);
-  //validation..............................
-  if(this.user.username==''||this.user.username==null){
-  // alert('user is required!!!');
-   this.snack.open('Please enter Username!', '',{
-    duration:3000,
-    // verticalPosition:'top',
-    // horizontalPosition:'right'
-   });
-    return; 
-  }
-  // if(this.user.username.includes(this.user.username)){
-  //   this.snack.open('UserName exists!!!!!!', '',{
-  //    duration:3000,
-  //   });
-  //    return;
-  // }
-  
-  if(this.user.password==''||this.user.password==null){
-    this.snack.open('Password Required!', '',{
-     duration:3000,
-    });
-     return; 
-}
-if(this.user.firstName==''||this.user.firstName==null){
-  this.snack.open('FirstName Required!', '',{
-   duration:3000,
-  });
-   return;
-}
-   if(this.user.lastName==''||this.user.lastName==null){
-    this.snack.open('FirstName Required!', '',{
-     duration:3000,
-    });
-     return;
-  }
-  if(this.user.email==''||this.user.email==null){
-    this.snack.open('Email Required!', '',{
-     duration:3000,
-    });
-     return;
-      
-  }
-  if(this.user.phone==''||this.user.phone==null){
-    this.snack.open('Enter mobile number!', '',{
-     duration:3000,
-    });
-     return; 
-}
-  //call addu  ser function
-
-  this.userService.addUser(this.user).subscribe(
-   (data)=> {
-      // next: (v) => console.log('sucessfully added'),
-      // error: (e) => console.error('error adding user'),
-      // complete: () => console.info('complete')
-
-      console.log(data);
-      swal.fire('success','Successfully added','success')
-    },
-    (error)=>{
-
-      console.log(error);
-      swal.fire('error','Successfully added','error')
+  formSubmit() {
+    console.log(this.user);
+    if (this.user.username == '' || this.user.username == null) {
+      // alert('User is required !!');
+      this.snack.open('Username is required !! ', '', {
+        duration: 3000,
       });
-        }
+      return;
+    }
+
+    if (this.user.password == '' || this.user.password == null) {
+      // alert('User is required !!');
+      this.snack.open('Password is required !! ', '', {
+        duration: 3000,
+      });
+      return;
+    }
+
+    //validate
+
+    //addUser: userservice
+    this.userService.addUser(this.user).subscribe(
+      (data: any) => {
+        //success
+        console.log(data);
+        //alert('success');
+        Swal.fire('Successfully done !!', 'User id is ' + data.id, 'success');
+      },
+      (error) => {
+        //error
+        console.log(error);
+        // alert('something went wrong');
+        this.snack.open(error.error.text, '', {
+          duration: 3000,
+        });
+      }
+    );
+  }
+
     
 }
 
